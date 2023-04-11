@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 241896553}
   - component: {fileID: 241896552}
   - component: {fileID: 241896551}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Terrain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22702,6 +22702,7 @@ GameObject:
   - component: {fileID: 1041264501}
   - component: {fileID: 1041264500}
   - component: {fileID: 1041264499}
+  - component: {fileID: 1041264502}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -22789,6 +22790,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 7
+  jumpSpeed: 9
+  jumpTime: 0.35
+  jumpVelocity: 9
+  jumpaleGround:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!50 &1041264500
 Rigidbody2D:
   serializedVersion: 4
@@ -22804,7 +22811,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 2
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -22836,3 +22843,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.1428657, y: 1.5956914}
   m_EdgeRadius: 0
+--- !u!114 &1041264502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1041264496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e42c4090e86577458011dd2c49c4b33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fallMultiplier: 2.5
+  lowJumpMultiplier: 2
