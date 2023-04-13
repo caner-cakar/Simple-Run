@@ -15,7 +15,7 @@ public class PlayerMovement : MonoBehaviour
     [Range(1,20)]
     public float jumpVelocity;
 
-    [SerializeField] private LayerMask jumpaleGround;
+    [SerializeField] private LayerMask jumpableGround;
 
     private enum MovementState{idle,running,jumping,falling}
     private MovementState state = MovementState.idle;
@@ -31,19 +31,19 @@ public class PlayerMovement : MonoBehaviour
     {
         dirX = Input.GetAxisRaw("Horizontal");
         rb.velocity = new Vector2(dirX * moveSpeed,rb.velocity.y);
-
+        
         Jump();
         UpdateAnimationState();
     }
     private void UpdateAnimationState()
     {
         MovementState state;
-        if(dirX < 0 )
+        if(dirX < 0)
         {
             state = MovementState.running;
             transform.eulerAngles = new Vector3(0, 180, 0);
         }
-        else if (dirX > 0 )
+        else if (dirX > 0)
         {
             state = MovementState.running;
             transform.eulerAngles = new Vector3(0, 0, 0);
@@ -74,6 +74,6 @@ public class PlayerMovement : MonoBehaviour
     
     private bool isGrounded()
     {
-        return Physics2D.BoxCast(coll.bounds.center,coll.bounds.size,0f,Vector2.down,.1f,jumpaleGround);
+        return Physics2D.BoxCast(coll.bounds.center,coll.bounds.size,0f,Vector2.down,.1f,jumpableGround);
     }
 }
