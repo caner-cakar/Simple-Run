@@ -8,14 +8,9 @@ public class PlayerMovement : MonoBehaviour
     private BoxCollider2D coll;
     private Animator anim;
     
-    private bool facingRight = true;
     private float dirX = 0f;
 
     [SerializeField] private float moveSpeed = 7f;
-
-    private float jumpTimeCounter;
-    public float jumpTime;
-    private bool isJumping;
 
     [Range(1,20)]
     public float jumpVelocity;
@@ -72,31 +67,9 @@ public class PlayerMovement : MonoBehaviour
     {
         if(Input.GetButtonDown("Jump") && isGrounded())
         {
-            state = MovementState.jumping;
-            isJumping=true;
-            jumpTimeCounter=jumpTime;
             rb.velocity = Vector2.up * jumpVelocity;
         }
    
-        if(Input.GetButton("Jump") && isJumping == true)
-        {
-            if(jumpTimeCounter > 0)
-            {
-                state = MovementState.jumping;
-                rb.velocity = Vector2.up * jumpVelocity;
-                jumpTimeCounter -= Time.deltaTime;
-            }
-            else
-            {
-                state = MovementState.falling;
-                isJumping = false;
-            }
-        }
-        if(Input.GetButtonUp("Jump"))
-        {
-            state = MovementState.falling;
-            isJumping = false;
-        }
     }
     
     private bool isGrounded()
